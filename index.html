@@ -38,9 +38,9 @@
       <button type="button" id="btnBegin">Rozpocznij kwestionariusz</button>
     </section>
 
-    <!-- Ekran pytań EQ-5D-5L + skala EQ VAS -->
+    <!-- Ekran pytań EQ-5D-5L + suwak z instrukcją obok oraz skalą -->
     <section id="questionsScreen" class="screen">
-      <!-- Pytanie 1 -->
+      <!-- Pytania 1–5 -->
       <div class="question">
         <p class="question-text">1. Poruszanie się</p>
         <div class="options">
@@ -51,7 +51,6 @@
           <label><input type="radio" name="q1" value="5" /> Nie jestem w stanie się poruszać.</label>
         </div>
       </div>
-      <!-- Pytanie 2 -->
       <div class="question">
         <p class="question-text">2. Samoobsługa</p>
         <div class="options">
@@ -62,7 +61,6 @@
           <label><input type="radio" name="q2" value="5" /> Nie jestem w stanie samodzielnie się umyć ani ubrać.</label>
         </div>
       </div>
-      <!-- Pytanie 3 -->
       <div class="question">
         <p class="question-text">3. Zwykłe czynności</p>
         <div class="options">
@@ -73,7 +71,6 @@
           <label><input type="radio" name="q3" value="5" /> Nie jestem w stanie wykonywać swoich zwykłych czynności.</label>
         </div>
       </div>
-      <!-- Pytanie 4 -->
       <div class="question">
         <p class="question-text">4. Ból/dyskomfort</p>
         <div class="options">
@@ -84,7 +81,6 @@
           <label><input type="radio" name="q4" value="5" /> Odczuwam bardzo silny ból lub dyskomfort.</label>
         </div>
       </div>
-      <!-- Pytanie 5 -->
       <div class="question">
         <p class="question-text">5. Niepokój/przygnębienie</p>
         <div class="options">
@@ -95,18 +91,83 @@
           <label><input type="radio" name="q5" value="5" /> Odczuwam bardzo silny niepokój lub przygnębienie.</label>
         </div>
       </div>
-      <!-- Pionowy suwak EQ VAS -->
-      <div class="question">
-        <p class="question-text">Ocena ogólna zdrowia</p>
-        <div class="slider-group">
-          <div class="slider-container">
-            <div>100</div>
-            <input type="range" id="vas" name="vas" orient="vertical" min="0" max="100" value="50" />
-            <div>0</div>
+
+      <!-- Nowy układ: instrukcja obok suwaka i skala numeryczna -->
+      <div class="vas-wrapper">
+        <!-- Lewa kolumna: tekst instrukcji -->
+        <div class="vas-instructions">
+          <ul>
+            <li>Chcielibyśmy wiedzieć, jak dobre lub jak złe jest Pana/Pani zdrowie <strong>DZISIAJ</strong>.</li>
+            <li>Ta skala jest ponumerowana od <strong>0</strong> do <strong>100</strong>.</li>
+            <li><strong>100</strong> oznacza najlepsze zdrowie, jakie można sobie wyobrazić.<br>
+                <strong>0</strong> oznacza najgorsze zdrowie, jakie można sobie wyobrazić.</li>
+            <li>Proszę zaznaczyć krzyżykiem (X) miejsce na skali, które pokazuje, jakie jest Pana/Pani zdrowie <strong>DZISIAJ</strong>.</li>
+            <li>Wpisz teraz liczbę, którą zaznaczyłeś(a) na skali, w okienko poniżej.</li>
+          </ul>
+          <div class="vas-input-wrapper">
+            <label for="vasManual">PANA/PANI ZDROWIE DZISIAJ = </label>
+            <input type="number" id="vasManual" name="vasManual" min="0" max="100" />
           </div>
-          <p>Wybrana wartość: <span id="vasValue">50</span> / 100</p>
+        </div>
+
+        <!-- Środkowa kolumna: suwak pionowy -->
+        <div class="vas-slider-container">
+          <div class="slider-scale">
+            <!-- Wygenerujemy co 5 punktów od 100 do 0 -->
+            <!-- Podstawowa linia i oznaczenia liczbowe: -->
+            <div class="scale-label top">Najlepsze zdrowie, jakie można sobie wyobrazić</div>
+            <div class="scale-numbers">
+              <!-- Można je wypisać ręcznie lub za pomocą pętli w kodzie, tutaj ręcznie co 5: -->
+              <span class="num">100</span>
+              <span class="tick"></span>
+              <span class="num">95</span>
+              <span class="tick small"></span>
+              <span class="num">90</span>
+              <span class="tick small"></span>
+              <span class="num">85</span>
+              <span class="tick"></span>
+              <span class="num">80</span>
+              <span class="tick small"></span>
+              <span class="num">75</span>
+              <span class="tick small"></span>
+              <span class="num">70</span>
+              <span class="tick"></span>
+              <span class="num">65</span>
+              <span class="tick small"></span>
+              <span class="num">60</span>
+              <span class="tick small"></span>
+              <span class="num">55</span>
+              <span class="tick"></span>
+              <span class="num">50</span>
+              <span class="tick small"></span>
+              <span class="num">45</span>
+              <span class="tick small"></span>
+              <span class="num">40</span>
+              <span class="tick"></span>
+              <span class="num">35</span>
+              <span class="tick small"></span>
+              <span class="num">30</span>
+              <span class="tick small"></span>
+              <span class="num">25</span>
+              <span class="tick"></span>
+              <span class="num">20</span>
+              <span class="tick small"></span>
+              <span class="num">15</span>
+              <span class="tick small"></span>
+              <span class="num">10</span>
+              <span class="tick"></span>
+              <span class="num">5</span>
+              <span class="tick small"></span>
+              <span class="num">0</span>
+            </div>
+            <div class="scale-label bottom">Najgorsze zdrowie, jakie można sobie wyobrazić</div>
+          </div>
+          <!-- Pionowy suwak nakłada się na środek tej skali -->
+          <input type="range" id="vas" name="vas" orient="vertical" min="0" max="100" value="50" />
+          <div class="vas-current">Wybrana wartość: <span id="vasValue">50</span> / 100</div>
         </div>
       </div>
+
       <button type="button" id="btnFinish">Zakończ kwestionariusz</button>
     </section>
   </form>
