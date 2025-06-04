@@ -1,23 +1,25 @@
-/* Ogólne ustawienia stylów */
+/* ===========================
+   GLOBALNE USTAWIENIA STYLU
+   =========================== */
 body {
   font-family: Arial, sans-serif;
   font-size: 18px;
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
   padding: 0;
-  background: #f9f9f9;
+  background: #f0f0f0;
 }
 
 .container {
   max-width: 900px;
-  margin: 0 auto;
-  padding: 1em;
-  background: #fff;
+  margin: 1em auto;
+  padding: 1.5em;
+  background: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Ekrany (sekcje) – tylko aktywny ekran jest widoczny */
+/* Ukrywamy wszystkie sekcje, pokazujemy tylko aktywną */
 .screen {
   display: none;
 }
@@ -25,82 +27,126 @@ body {
   display: block;
 }
 
-/* Nagłówki */
+/* ===========================
+   NAGŁÓWKI
+   =========================== */
 h1, h2 {
   text-align: center;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.8em;
 }
 h1 {
-  font-size: 2em;
+  font-size: 2.4em;
 }
 h2 {
-  font-size: 1.5em;
+  font-size: 1.6em;
 }
 
-/* Formularz danych osobowych */
+/* ===========================
+   FORMULARZ DANYCH OSOBOWYCH
+   =========================== */
 .form-group {
-  margin-bottom: 1em;
+  margin-bottom: 1.2em;
 }
 .form-group label {
   display: block;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.4em;
   font-weight: bold;
+  font-size: 1.1em;
 }
-.form-group input[type="text"] {
+.form-group input[type="text"],
+.form-group input[type="number"] {
   font: inherit;
-  padding: 0.5em;
+  font-size: 1.1em;
+  padding: 0.6em;
   width: 100%;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
+  outline: none;
+}
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus {
+  border-color: #007BFF;
 }
 
-/* Styl pytań i opcji */
+/* ===========================
+   PYTANIA I OPCJE WYBORU
+   =========================== */
 .question {
   margin-bottom: 2em;
 }
 .question-text {
   font-weight: bold;
-  font-size: 1.1em;
-  margin-bottom: 0.5em;
+  font-size: 1.2em;
+  margin-bottom: 0.6em;
 }
 .options label {
-  display: block;
-  width: 100%;
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  padding: 0.5em;
+  padding: 0.6em 0.8em;
   border: 2px solid #ccc;
-  border-radius: 0.5em;
-  margin-bottom: 0.5em;
+  border-radius: 6px;
+  margin-bottom: 0.6em;
   background: #fff;
+  font-size: 1.05em;
+  transition: background 0.2s, border-color 0.2s;
 }
 .options label:hover {
-  background: #f0f0f0;
+  background: #f5f5f5;
 }
-/* Zaznaczona opcja – podświetlenie */
+/* Zaznaczona opcja – wyraźne podświetlenie */
 .options label:has(input[type="radio"]:checked) {
-  background: #D0E8FF;
+  background: #E0F0FF;
   border-color: #007BFF;
 }
 
-/* Powiększenie pól wyboru (radio) dla łatwiejszego kliku */
+/* Powiększenie przycisku radio dla wygody dotyku */
 input[type="radio"] {
   transform: scale(1.5);
-  margin-right: 0.5em;
+  margin-right: 0.6em;
   vertical-align: middle;
 }
 
-/* --------- STYL DLA EKRANU VAS ---------- */
-.vas-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 2em 0;
+/* ===========================
+   PRZYCISKI
+   =========================== */
+button {
+  font: inherit;
+  font-size: 1.1em;
+  padding: 0.8em 1.5em;
+  color: #fff;
+  background: #007BFF;
+  border: none;
+  border-radius: 0.4em;
+  cursor: pointer;
+  display: block;
+  margin: 1.2em auto;
+  min-width: 220px;
+  transition: background 0.2s;
+}
+button:hover,
+button:focus {
+  background: #005FCC;
 }
 
-/* Lewa kolumna: instrukcja */
+/* ===========================
+   EKRAN VAS (SKALA + SUWAK)
+   =========================== */
+.vas-wrapper {
+  margin: 2em 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+}
+
+/* ---------------------------
+   LEWA KOLUMNA: INSTRUKCJE
+   --------------------------- */
 .vas-instructions {
-  flex: 1 1 250px;
-  margin-right: 1em;
+  flex: 1 1 260px;
+  font-size: 1.05em;
 }
 .vas-instructions ul {
   list-style: disc inside;
@@ -108,130 +154,159 @@ input[type="radio"] {
   padding-left: 1em;
 }
 .vas-instructions li {
-  margin-bottom: 0.8em;
-  font-size: 1em;
-  line-height: 1.4;
+  margin-bottom: 0.9em;
 }
 .vas-input-wrapper {
-  margin-top: 1em;
+  margin-top: 1.2em;
   display: flex;
   align-items: center;
   font-weight: bold;
 }
 .vas-input-wrapper label {
-  margin-right: 0.5em;
+  margin-right: 0.6em;
+  font-size: 1.1em;
 }
 .vas-input-wrapper input[type="number"] {
-  width: 70px;
-  padding: 0.3em;
-  font-size: 1em;
+  width: 80px;
+  padding: 0.5em;
+  font-size: 1.1em;
   border: 2px solid #ccc;
   border-radius: 4px;
+  outline: none;
+}
+.vas-input-wrapper input[type="number"]:focus {
+  border-color: #007BFF;
 }
 
-/* Środkowa kolumna: skala + suwak */
+/* ---------------------------
+   ŚRODKOWA KOLUMNA: SUWAK I SKALA
+   --------------------------- */
 .vas-slider-container {
-  flex: 0 1 150px;  /* ustalamy minimalną szerokość */
-  position: relative;
+  flex: 0 1 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1em;
 }
 
-/* Pionowy suwak */
-.vas-slider-container input[type="range"] {
-  writing-mode: vertical-lr;
-  direction: rtl;
-  -webkit-appearance: slider-vertical;
-  width: 30px;    /* grubość suwaka */
-  height: 360px;  /* długość suwaka dopasowana do skali */
-  margin: 10px 0; /* odstępy od elementów górą/dół */
+/* Kontener z dwiema kolumnami: skala i suwak */
+.scale-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4em;
 }
 
-/* Wyświetlanie bieżącej wartości */
-.vas-current {
-  margin-top: 0.5em;
+/* Tekst nad i pod skalą */
+.scale-label {
   font-size: 1em;
   text-align: center;
-}
-
-/* Skala numeryczna z opisami */
-.slider-scale {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Wyświetlamy skalę za suwakiem */
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Etykieta na górze i na dole: */
-.scale-label {
-  font-size: 0.9em;
-  text-align: center;
-  padding: 0 5px;
+  line-height: 1.2;
 }
 .scale-label.top {
-  margin-bottom: 4px;
+  margin-bottom: 0.4em;
 }
 .scale-label.bottom {
-  margin-top: 4px;
+  margin-top: 0.4em;
 }
 
-/* Kontener z liczbami i kreskami */
+/* Skala liczbowa i kreski (co 10 punktów duża kreska, co 10-nastą liczba) */
 .scale-numbers {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-}
-
-/* Każda etykieta liczby i kreska */
-.scale-numbers .num {
-  font-size: 0.9em;
-}
-.scale-numbers .tick {
-  display: block;
-  width: 80%;
-  height: 2px;
-  background: #000;
-  margin: -1px 0; /* przesunięcie w pionie, by kreska była bliżej środka */
-}
-.scale-numbers .tick.small {
-  width: 50%;
-  height: 1px;
-  background: #000;
-  margin: -0.5px 0;
-}
-
-/* Opcjonalnie: malutkie odstępy pomiędzy liczbami a kreskami, jeśli trzeba */
-.scale-numbers .num,
-.scale-numbers .tick {
-  line-height: 1;
-}
-
-/* --------------------------------------- */
-
-/* Styl przycisków */
-button {
-  font: inherit;
+  height: 360px; /* wysokość dopasowana do suwaka */
   font-size: 1em;
-  padding: 0.6em 1.2em;
-  color: #fff;
-  background: #007BFF;
-  border: none;
-  border-radius: 0.3em;
-  cursor: pointer;
-  display: block;
-  margin: 1em auto;
-  min-width: 200px; /* minimalna szerokość dla większej klikalności */
+  line-height: 1.2;
 }
-button:hover, button:focus {
-  background: #005FCC;
+.scale-numbers .num {
+  font-weight: bold;
+}
+.scale-numbers .tick {
+  display: block;
+  background: #000;
+}
+.scale-numbers .tick.long {
+  width: 40px;
+  height: 4px;
+  margin: -2px 0; /* wyrównanie w pionie przy liczbie */
+}
+.scale-numbers .tick.short {
+  width: 20px;
+  height: 2px;
+  margin: -1px 0;
+}
+
+/* Suwak pionowy */
+.slider-box input[type="range"] {
+  -webkit-appearance: slider-vertical;
+  writing-mode: vertical-lr;
+  direction: rtl;
+  width: 30px;    /* grubość suwaka */
+  height: 360px;  /* długość suwaka taka sama, jak height .scale-numbers */
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+.slider-box input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #007BFF;
+  border: 2px solid #555;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+}
+.slider-box input[type="range"]::-moz-range-thumb {
+  background: #007BFF;
+  border: 2px solid #555;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+.slider-box input[type="range"]::-webkit-slider-runnable-track {
+  background: #ccc;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+.slider-box input[type="range"]::-moz-range-track {
+  background: #ccc;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Wyświetlana wartość pod suwakiem */
+.vas-current {
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ===========================
+   DOPASOWANIE DLA MAŁYCH EKRANÓW
+   =========================== */
+@media (max-width: 650px) {
+  .vas-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .vas-instructions {
+    order: 1;
+    width: 100%;
+  }
+  .vas-slider-container {
+    order: 2;
+    width: 100%;
+    align-items: center;
+  }
+  .scale-numbers {
+    height: 260px;
+  }
+  .slider-box input[type="range"] {
+    height: 260px;
+  }
 }
