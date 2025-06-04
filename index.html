@@ -39,6 +39,7 @@
     </section>
 
     <!-- Ekran pytań EQ-5D-5L + suwak z instrukcją obok oraz skalą -->
+
     <section id="questionsScreen" class="screen">
       <!-- Pytania 1–5 -->
       <div class="question">
@@ -110,60 +111,43 @@
           </div>
         </div>
 
-        <!-- Środkowa kolumna: suwak pionowy -->
+        <!-- Środkowa kolumna: skala + suwak -->
         <div class="vas-slider-container">
-          <div class="slider-scale">
-            <!-- Wygenerujemy co 5 punktów od 100 do 0 -->
-            <!-- Podstawowa linia i oznaczenia liczbowe: -->
-            <div class="scale-label top">Najlepsze zdrowie, jakie można sobie wyobrazić</div>
+          <!-- Skala numeryczna (kolumna z liczbami i kreskami) -->
+          <div class="scale-box">
+            <div class="scale-label top">Najlepsze zdrowie, jakie można<br>sobie wyobrazić</div>
             <div class="scale-numbers">
-              <!-- Można je wypisać ręcznie lub za pomocą pętli w kodzie, tutaj ręcznie co 5: -->
               <span class="num">100</span>
-              <span class="tick"></span>
-              <span class="num">95</span>
-              <span class="tick small"></span>
+              <span class="tick long"></span>
               <span class="num">90</span>
-              <span class="tick small"></span>
-              <span class="num">85</span>
-              <span class="tick"></span>
+              <span class="tick short"></span>
               <span class="num">80</span>
-              <span class="tick small"></span>
-              <span class="num">75</span>
-              <span class="tick small"></span>
+              <span class="tick short"></span>
               <span class="num">70</span>
-              <span class="tick"></span>
-              <span class="num">65</span>
-              <span class="tick small"></span>
+              <span class="tick long"></span>
               <span class="num">60</span>
-              <span class="tick small"></span>
-              <span class="num">55</span>
-              <span class="tick"></span>
+              <span class="tick short"></span>
               <span class="num">50</span>
-              <span class="tick small"></span>
-              <span class="num">45</span>
-              <span class="tick small"></span>
+              <span class="tick short"></span>
               <span class="num">40</span>
-              <span class="tick"></span>
-              <span class="num">35</span>
-              <span class="tick small"></span>
+              <span class="tick long"></span>
               <span class="num">30</span>
-              <span class="tick small"></span>
-              <span class="num">25</span>
-              <span class="tick"></span>
+              <span class="tick short"></span>
               <span class="num">20</span>
-              <span class="tick small"></span>
-              <span class="num">15</span>
-              <span class="tick small"></span>
+              <span class="tick short"></span>
               <span class="num">10</span>
-              <span class="tick"></span>
-              <span class="num">5</span>
-              <span class="tick small"></span>
+              <span class="tick long"></span>
               <span class="num">0</span>
             </div>
-            <div class="scale-label bottom">Najgorsze zdrowie, jakie można sobie wyobrazić</div>
+            <div class="scale-label bottom">Najgorsze zdrowie, jakie można<br>sobie wyobrazić</div>
           </div>
-          <!-- Pionowy suwak nakłada się na środek tej skali -->
-          <input type="range" id="vas" name="vas" orient="vertical" min="0" max="100" value="50" />
+
+          <!-- Suwak pionowy -->
+          <div class="slider-box">
+            <input type="range" id="vas" name="vas" orient="vertical" min="0" max="100" value="50" />
+          </div>
+
+          <!-- Wybrana wartość -->
           <div class="vas-current">Wybrana wartość: <span id="vasValue">50</span> / 100</div>
         </div>
       </div>
