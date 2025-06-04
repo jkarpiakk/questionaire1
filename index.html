@@ -39,7 +39,6 @@
     </section>
 
     <!-- Ekran pytań EQ-5D-5L + suwak z instrukcją obok oraz skalą -->
-
     <section id="questionsScreen" class="screen">
       <!-- Pytania 1–5 -->
       <div class="question">
@@ -113,9 +112,9 @@
 
         <!-- Środkowa kolumna: skala + suwak -->
         <div class="vas-slider-container">
-          <!-- Skala numeryczna (kolumna z liczbami i kreskami) -->
+          <!-- Skala liczbowa (po lewej stronie suwaka) -->
           <div class="scale-box">
-            <div class="scale-label top">Najlepsze zdrowie, jakie można<br>sobie wyobrazić</div>
+            <div class="scale-label top">Najlepsze zdrowie,<br>jakie można sobie wyobrazić</div>
             <div class="scale-numbers">
               <span class="num">100</span>
               <span class="tick long"></span>
@@ -139,15 +138,15 @@
               <span class="tick long"></span>
               <span class="num">0</span>
             </div>
-            <div class="scale-label bottom">Najgorsze zdrowie, jakie można<br>sobie wyobrazić</div>
+            <div class="scale-label bottom">Najgorsze zdrowie,<br>jakie można sobie wyobrazić</div>
           </div>
 
-          <!-- Suwak pionowy -->
+          <!-- Suwak pionowy obok skali -->
           <div class="slider-box">
             <input type="range" id="vas" name="vas" orient="vertical" min="0" max="100" value="50" />
           </div>
 
-          <!-- Wybrana wartość -->
+          <!-- Bieżąca wartość poniżej suwaka -->
           <div class="vas-current">Wybrana wartość: <span id="vasValue">50</span> / 100</div>
         </div>
       </div>
