@@ -179,17 +179,17 @@ button:focus {
 }
 
 /* ---------------------------
-   ŚRODKOWA KOLUMNA: SUWAK I SKALA
+   ŚRODKOWA KOLUMNA: SKALA + SUWAK
    --------------------------- */
 .vas-slider-container {
-  flex: 0 1 200px;
+  flex: 0 1 320px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;      /* najważniejsza zmiana: teraz flex-row */
   align-items: center;
-  gap: 1em;
+  gap: 1.2em;
 }
 
-/* Kontener z dwiema kolumnami: skala i suwak */
+/* Kontener dla całej skali (liczby + kreski + napisy) */
 .scale-box {
   display: flex;
   flex-direction: column;
@@ -210,7 +210,7 @@ button:focus {
   margin-top: 0.4em;
 }
 
-/* Skala liczbowa i kreski (co 10 punktów duża kreska, co 10-nastą liczba) */
+/* Skala liczbowa i kreski: wyrównanie co 10 punktów */
 .scale-numbers {
   display: flex;
   flex-direction: column;
@@ -238,7 +238,12 @@ button:focus {
   margin: -1px 0;
 }
 
-/* Suwak pionowy */
+/* Suwak pionowy obok skali */
+.slider-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .slider-box input[type="range"] {
   -webkit-appearance: slider-vertical;
   writing-mode: vertical-lr;
@@ -284,6 +289,7 @@ button:focus {
   font-size: 1.1em;
   font-weight: bold;
   text-align: center;
+  margin-top: 0.8em;
 }
 
 /* ===========================
@@ -301,6 +307,7 @@ button:focus {
   .vas-slider-container {
     order: 2;
     width: 100%;
+    flex-direction: column; /* na mobilce skala i suwak pod sobą */
     align-items: center;
   }
   .scale-numbers {
