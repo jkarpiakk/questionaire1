@@ -5,12 +5,16 @@ body {
   line-height: 1.5;
   margin: 0;
   padding: 0;
+  background: #f9f9f9;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 1em;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 /* Ekrany (sekcje) – tylko aktywny ekran jest widoczny */
@@ -47,6 +51,8 @@ h2 {
   padding: 0.5em;
   width: 100%;
   box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
 }
 
 /* Styl pytań i opcji */
@@ -66,6 +72,7 @@ h2 {
   border: 2px solid #ccc;
   border-radius: 0.5em;
   margin-bottom: 0.5em;
+  background: #fff;
 }
 .options label:hover {
   background: #f0f0f0;
@@ -83,62 +90,133 @@ input[type="radio"] {
   vertical-align: middle;
 }
 
-/* Styl suwaka pionowego (EQ VAS) */
-.slider-container {
+/* --------- STYL DLA EKRANU VAS ---------- */
+.vas-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2em 0;
+}
+
+/* Lewa kolumna: instrukcja */
+.vas-instructions {
+  flex: 1 1 250px;
+  margin-right: 1em;
+}
+.vas-instructions ul {
+  list-style: disc inside;
+  margin: 0;
+  padding-left: 1em;
+}
+.vas-instructions li {
+  margin-bottom: 0.8em;
+  font-size: 1em;
+  line-height: 1.4;
+}
+.vas-input-wrapper {
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+.vas-input-wrapper label {
+  margin-right: 0.5em;
+}
+.vas-input-wrapper input[type="number"] {
+  width: 70px;
+  padding: 0.3em;
+  font-size: 1em;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Środkowa kolumna: skala + suwak */
+.vas-slider-container {
+  flex: 0 1 150px;  /* ustalamy minimalną szerokość */
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Można ustawić wysokość, np. height: 300px, aby zachować stałą długość suwaka */
-}
-.slider-container > * {
-  /* Centrowanie elementów tekstowych (100 i 0) */
-  text-align: center;
-}
-.slider-container input[type="range"] {
-  margin: 0.5em 0;
 }
 
-/* Pionowy suwak - obsługa przeglądarek */
-input[type="range"][orient="vertical"] {
-  /* Dla nowoczesnych przeglądarek: ustawienie suwaka pionowo */
+/* Pionowy suwak */
+.vas-slider-container input[type="range"] {
   writing-mode: vertical-lr;
   direction: rtl;
   -webkit-appearance: slider-vertical;
-  width: 30px;   /* grubość suwaka */
-  height: 300px; /* długość suwaka */
+  width: 30px;    /* grubość suwaka */
+  height: 360px;  /* długość suwaka dopasowana do skali */
+  margin: 10px 0; /* odstępy od elementów górą/dół */
 }
 
-/* Styl toru suwaka (track) */
-input[type="range"][orient="vertical"]::-webkit-slider-runnable-track {
-  background: #ccc;
-  border-radius: 5px;
-  width: 100%;
-}
-input[type="range"][orient="vertical"]::-moz-range-track {
-  background: #ccc;
-  border-radius: 5px;
-  width: 100%;
+/* Wyświetlanie bieżącej wartości */
+.vas-current {
+  margin-top: 0.5em;
+  font-size: 1em;
+  text-align: center;
 }
 
-/* Styl uchwytu (thumb) */
-input[type="range"][orient="vertical"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  background: #007BFF;
-  border: 2px solid #999;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  margin: 0;
+/* Skala numeryczna z opisami */
+.slider-scale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Wyświetlamy skalę za suwakiem */
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-input[type="range"][orient="vertical"]::-moz-range-thumb {
-  background: #007BFF;
-  border: 2px solid #999;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
+
+/* Etykieta na górze i na dole: */
+.scale-label {
+  font-size: 0.9em;
+  text-align: center;
+  padding: 0 5px;
 }
+.scale-label.top {
+  margin-bottom: 4px;
+}
+.scale-label.bottom {
+  margin-top: 4px;
+}
+
+/* Kontener z liczbami i kreskami */
+.scale-numbers {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Każda etykieta liczby i kreska */
+.scale-numbers .num {
+  font-size: 0.9em;
+}
+.scale-numbers .tick {
+  display: block;
+  width: 80%;
+  height: 2px;
+  background: #000;
+  margin: -1px 0; /* przesunięcie w pionie, by kreska była bliżej środka */
+}
+.scale-numbers .tick.small {
+  width: 50%;
+  height: 1px;
+  background: #000;
+  margin: -0.5px 0;
+}
+
+/* Opcjonalnie: malutkie odstępy pomiędzy liczbami a kreskami, jeśli trzeba */
+.scale-numbers .num,
+.scale-numbers .tick {
+  line-height: 1;
+}
+
+/* --------------------------------------- */
 
 /* Styl przycisków */
 button {
